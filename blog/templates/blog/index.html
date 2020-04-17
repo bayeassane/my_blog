@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Je suis la homepage</h1>
+
+{% include 'blog/list.html' with list_title='Les derniers articles' %}
 {% endblock content %}
