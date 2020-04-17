@@ -8,6 +8,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    
+    class Meta:
+        verbose_name = 'catégorie'
+        verbose_name_plural = 'catégories'
+
 class Post(models.Model):
     created_at = models.DateTimeField('date de création', auto_now_add=True)
     updated_at = models.DateTimeField('date de mise à jour', auto_now=True)
@@ -18,6 +23,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'article'
+        verbose_name_plural = 'articles'
+
     
 
 
