@@ -22,6 +22,17 @@
             </div>
          </div>
    {% endfor %}
+
+   <ul class="pager">
+      {% if posts.has_previous %}
+         <li><a href="?page={{ posts.previous_page_number }}">Précédent</a></li>
+      {% endif %}
+      {% if posts.has_next %}
+         <li><a href="?page={{ posts.next_page_number }}">Suivant</a></li>
+      {% endif %}
+      
+      
+   </ul>
 </div>
 
 

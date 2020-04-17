@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Category, Post
 from .forms import PostForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 # Create your views here.
@@ -12,7 +13,15 @@ def index(request):
     return render(request, 'blog/index.html', {'posts': posts})
 
 def listing(request):
-    posts = Post.objects.order_by('-created_at')
+    list_posts = Post.objects.order_by('-created_at')
+    paginator = Paginator(list_posts, 3)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/listing.html', {'posts': posts})
 
 def detail(request, id):
