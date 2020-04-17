@@ -15,3 +15,6 @@ def listing(request):
 def detail(request, id):
     post = get_object_or_404(Post, pk=id)
     return render(request, 'blog/detail.html', {'post': post})
+
+def add_post(request):
+    return render(request, 'blog/add_form.html')
