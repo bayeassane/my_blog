@@ -2,9 +2,25 @@
 {% load static %}
 
 {% block content %}
-<h2>{{ post.title }}</h2>
-<p>{{ post.content }}</p>
-{% if post.image %}
-    <img class="img-responsive pull-right" src="{{ post.image.url }}" alt="{{ post.image }}">
-{% endif %}
+
+
+
+<div class="media">
+    <h2 class="media-heading">{{ post.title }}</h2>
+    <div class="media-left">
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.image.url }}" width="400" height="300">
+    {% else %}
+        <img src="http://placehold.it/400x300" alt="http://placehold.it/400x300">
+    {% endif %}
+    </div>
+
+    <div class="media-body">
+        <p>{{ post.content }}</p>
+        <p>📅Posté depuis {{ post.created_at|timesince }}</p>
+                  
+        </div>
+</div>
+    
+
 {% endblock content %}
